@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
+import myUserRoute from "./routes/user";
 
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(() => {
@@ -13,9 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 
-app.get("/test",(req: Request, res: Response) =>{
-  res.json({message: "hello"});
-});
+app.use("/api/v1/users", myUserRoute)
 
 
 app.listen(3000, () => {
