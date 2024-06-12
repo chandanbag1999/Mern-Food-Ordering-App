@@ -3,6 +3,7 @@ import Layout from './layouts/layout';
 import Home from './pages/Home';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import UserProfilePage from './pages/UserProfilePage';
+import ProtectedRoute from './auth/ProtectedRoute';
 
 
 export default function AppRoutes() {
@@ -10,7 +11,9 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<Layout showHero><Home /></Layout>} />
       <Route path="/auth-callback" element={<AuthCallbackPage />} />
+      <Route element={<ProtectedRoute />}>
       <Route path="/user-profile" element={<Layout><UserProfilePage /></Layout>} />
+      </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
