@@ -32,4 +32,3 @@ export default async function createRestaurant(req: Request, res: Response){
   };
 };
 
-// TODO: test this function
