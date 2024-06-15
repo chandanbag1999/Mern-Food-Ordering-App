@@ -31,3 +31,5 @@ export default async function createRestaurant(req: Request, res: Response){
     res.status(500).json({ error: "Error creating restaurant" });
   };
 };
+
+// TODO: test this function
