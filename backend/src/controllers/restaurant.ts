@@ -3,13 +3,13 @@ import { Restaurant } from "../models/restaurant";
 import cloudinary from "cloudinary";
 import mongoose from "mongoose";
 
-export default async function createRestaurant(req: Request, res: Response){
+export default async function createRestaurant(req: Request, res: Response) {
   try {
     const existingRestaurant = await Restaurant.findOne({ user: req.userId });
 
     if (existingRestaurant) {
       return res.status(409).json({ message: "Restaurant already exists" });
-    };
+    }
 
     const image = req.file as Express.Multer.File;
     const base64Image = Buffer.from(image.buffer).toString("base64");
@@ -25,10 +25,8 @@ export default async function createRestaurant(req: Request, res: Response){
     await restaurant.save();
 
     res.status(201).json(restaurant.toObject());
-
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Error creating restaurant" });
-  };
-};
-
+  }
+}
